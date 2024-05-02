@@ -32,7 +32,7 @@ The design is free, but the following sections are needed:
 
 ### How to perform
 
-- Make a fork into a PRIVATE repository
+- Make a fork
 - Complete the task
 - Add @ltlaitoff to the fork for review
 - Write to the telegram chat or email that the task is completed
