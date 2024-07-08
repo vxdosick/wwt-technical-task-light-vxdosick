@@ -41,8 +41,7 @@
 		"react-select": "^5.7.7",
 		"swiper": "^11.0.3",
 		"vite-tsconfig-paths": "^4.2.1",
-		"zustand": "^4.4.7",
-		"zustand/middleware": "https://github.com/pmndrs/zustand.git#middleware"
+		"zustand": "^4.4.7"
 	},
 	"devDependencies": {
 		"@tanstack/eslint-plugin-query": "^5.17.20",
