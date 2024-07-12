@@ -3,10 +3,9 @@ import { Route, Routes } from 'react-router-dom'
 import { Container } from '@chakra-ui/react'
 
 import { Add } from '@components/MainComponents/Add'
+import { Added } from '@components/MainComponents/Added'
+import { Completed } from '@components/MainComponents/Completed'
 import { useAddTaskStore } from '@store/useStore'
-
-import { Added } from './MainComponents/Added'
-import { Completed } from './MainComponents/Completed'
 
 export const Main: React.FC = () => {
 	const { tasks } = useAddTaskStore()

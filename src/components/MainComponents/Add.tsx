@@ -1,8 +1,14 @@
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import {
+	Alert,
+	AlertDescription,
+	AlertIcon,
+	AlertTitle,
 	Button,
 	Center,
+	CloseButton,
 	FormControl,
 	FormLabel,
 	Heading,
@@ -13,11 +19,27 @@ import {
 import { useAddTaskStore } from '@store/useStore'
 
 export const Add: React.FC = () => {
-	const { title, description, setTitle, setDescription, addTask, tasks } =
-		useAddTaskStore()
+	const {
+		title,
+		description,
+		setTitle,
+		setDescription,
+		addTask,
+		tasks,
+		isAlertVisible,
+		setAlert
+	} = useAddTaskStore()
 	const { t } = useTranslation()
+
 	const handleAddTask = (e: React.FormEvent) => {
 		e.preventDefault()
+		const isTitleDuplicate = tasks.some(task => task.title === title)
+
+		if (isTitleDuplicate) {
+			setAlert(true, t('errorTitle'))
+			return
+		}
+
 		const newTask = {
 			id: tasks.length + 1,
 			title,
@@ -27,6 +49,7 @@ export const Add: React.FC = () => {
 		addTask(newTask)
 		setTitle('')
 		setDescription('')
+		setAlert(false, '')
 	}
 
 	return (
@@ -55,8 +78,8 @@ export const Add: React.FC = () => {
 				>
 					<FormLabel
 						as="label"
-						fontWeight={'bold'}
-						mb={'0'}
+						fontWeight="bold"
+						mb="0"
 					>
 						{t('inputTitle')}
 					</FormLabel>
@@ -68,12 +91,12 @@ export const Add: React.FC = () => {
 						value={title}
 						maxW="500px"
 						size="md"
-						mb={'5'}
+						mb="5"
 					/>
 					<FormLabel
 						as="label"
-						fontWeight={'bold'}
-						mb={'0'}
+						fontWeight="bold"
+						mb="0"
 					>
 						{t('inputDescription')}
 					</FormLabel>
@@ -84,18 +107,44 @@ export const Add: React.FC = () => {
 						value={description}
 						maxW="500px"
 						size="md"
-						mb={'5'}
+						mb="5"
 					/>
 					<Button
 						as="button"
 						type="submit"
-						variant={'solid'}
+						variant="solid"
 						colorScheme="red"
 					>
 						{t('addTaskButton')}
 					</Button>
 				</VStack>
 			</FormControl>
+			{isAlertVisible && (
+				<Alert
+					as="div"
+					status="error"
+					variant="solid"
+					maxW="500px"
+					mt={4}
+					mx="auto"
+				>
+					<AlertIcon as="image" />
+					<AlertTitle
+						as="h3"
+						mr={2}
+					>
+						{t('errorTitle')}
+					</AlertTitle>
+					<AlertDescription as="p">{t('failedMessage')}</AlertDescription>
+					<CloseButton
+						as="button"
+						position="absolute"
+						right="8px"
+						top="8px"
+						onClick={() => setAlert(false, '')}
+					/>
+				</Alert>
+			)}
 		</>
 	)
 }

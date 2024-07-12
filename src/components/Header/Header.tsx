@@ -21,15 +21,15 @@ export const Header: React.FC = () => {
 	return (
 		<Container
 			as="header"
-			maxW={'100%'}
+			maxW="100%"
 			py={4}
-			borderBottom={'1px'}
-			borderColor={'green'}
+			borderBottom="1px"
+			borderColor="green"
 		>
 			<Flex
 				as="div"
-				alignItems={'center'}
-				gap={'10px'}
+				alignItems="center"
+				gap="10px"
 				direction={{ base: 'column', md: 'row' }}
 			>
 				<ChakraLink
@@ -39,8 +39,8 @@ export const Header: React.FC = () => {
 					_hover={{ textDecoration: 'none' }}
 				>
 					<Button
-						color={'black'}
-						fontSize={'xl'}
+						color="black"
+						fontSize="xl"
 						variant="link"
 						textDecoration="none"
 						_hover={{ textDecoration: 'none' }}
@@ -52,7 +52,7 @@ export const Header: React.FC = () => {
 				<List
 					as="ul"
 					display="flex"
-					gap={'4'}
+					gap="4"
 					alignItems="center"
 				>
 					<ListItem as="li">
@@ -82,11 +82,11 @@ export const Header: React.FC = () => {
 						>
 							<Button
 								colorScheme="green"
-								size={'xs'}
-								variant={'solid'}
-								borderRadius={'9px'}
-								h={'40px'}
-								fontSize={'15px'}
+								size="xs"
+								variant="solid"
+								borderRadius="9px"
+								h="40px"
+								fontSize="15px"
 							>
 								{t('addLink')}
 							</Button>
@@ -99,11 +99,11 @@ export const Header: React.FC = () => {
 						>
 							<Button
 								colorScheme="green"
-								size={'xs'}
-								variant={'solid'}
-								borderRadius={'9px'}
-								h={'40px'}
-								fontSize={'15px'}
+								size="xs"
+								variant="solid"
+								borderRadius="9px"
+								h="40px"
+								fontSize="15px"
 							>
 								{t('addedLink')}
 							</Button>
@@ -116,11 +116,11 @@ export const Header: React.FC = () => {
 						>
 							<Button
 								colorScheme="green"
-								size={'xs'}
-								variant={'solid'}
-								borderRadius={'9px'}
-								h={'40px'}
-								fontSize={'15px'}
+								size="xs"
+								variant="solid"
+								borderRadius="9px"
+								h="40px"
+								fontSize="15px"
 							>
 								{t('completedLink')}
 							</Button>

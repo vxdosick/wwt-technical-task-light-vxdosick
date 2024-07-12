@@ -64,7 +64,7 @@ export const Added: React.FC<AddedProps> = ({ addedItems }) => {
 			<Box as="div">
 				<List
 					as="ul"
-					spacing={'3'}
+					spacing="3"
 				>
 					{addedItems.length > 0 ? (
 						addedItems.map(item => (
@@ -77,14 +77,14 @@ export const Added: React.FC<AddedProps> = ({ addedItems }) => {
 										<Input
 											value={editTitle}
 											onChange={e => setEditTitle(e.target.value)}
-											mb={'4'}
-											fontSize={'lg'}
+											mb="4"
+											fontSize="lg"
 										/>
 										<Input
 											value={editDescription}
 											onChange={e => setEditDescription(e.target.value)}
-											mb={'4'}
-											fontSize={'md'}
+											mb="4"
+											fontSize="md"
 										/>
 										<Button onClick={() => handleSaveClick(item.id)}>
 											{t('saveButton')}
@@ -93,25 +93,25 @@ export const Added: React.FC<AddedProps> = ({ addedItems }) => {
 								) : (
 									<>
 										<Heading
-											mb={'4'}
-											as={'h3'}
-											fontSize={'lg'}
+											mb="4"
+											as="h3"
+											fontSize="lg"
 										>
 											{t('taskNumber')} {item.id}: {item.title}
 										</Heading>
 										{item.description ? (
 											<Text
-												as={'p'}
-												mb={'4'}
-												fontSize={'md'}
+												as="p"
+												mb="4"
+												fontSize="md"
 											>
 												{t('taskDetails')} {item.description}
 											</Text>
 										) : (
 											<Text
-												as={'p'}
-												mb={'4'}
-												fontSize={'md'}
+												as="p"
+												mb="4"
+												fontSize="md"
 											>
 												{t('noTaskDetails')}
 											</Text>
@@ -119,10 +119,10 @@ export const Added: React.FC<AddedProps> = ({ addedItems }) => {
 										<ButtonGroup as="div">
 											<Button
 												as="button"
-												p={'5'}
+												p="5"
 												colorScheme={item.isComplete ? 'green' : 'gray'}
-												size={'xs'}
-												fontSize={'md'}
+												size="xs"
+												fontSize="md"
 												onClick={() => toggleComplete(item.id)}
 											>
 												{item.isComplete
@@ -131,20 +131,20 @@ export const Added: React.FC<AddedProps> = ({ addedItems }) => {
 											</Button>
 											<Button
 												as="button"
-												p={'5'}
+												p="5"
 												colorScheme="orange"
-												size={'xs'}
-												fontSize={'md'}
+												size="xs"
+												fontSize="md"
 												onClick={() => handleEditClick(item)}
 											>
 												{t('updateButton')}
 											</Button>
 											<Button
 												as="button"
-												p={'5'}
+												p="5"
 												colorScheme="red"
-												size={'xs'}
-												fontSize={'md'}
+												size="xs"
+												fontSize="md"
 												onClick={() => removeTask(item.id)}
 											>
 												{t('deleteButton')}
@@ -157,7 +157,7 @@ export const Added: React.FC<AddedProps> = ({ addedItems }) => {
 					) : (
 						<Heading
 							as="h2"
-							textAlign={'center'}
+							textAlign="center"
 						>
 							{t('addedEmptyMessage')}
 						</Heading>

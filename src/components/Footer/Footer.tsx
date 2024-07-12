@@ -9,9 +9,9 @@ export const Footer: React.FC = () => {
 		<Container
 			as="footer"
 			maxW={'100vw'}
-			py={4}
-			borderTop={'1px'}
-			borderColor={'green'}
+			py="4"
+			borderTop="1px"
+			borderColor="green"
 		>
 			<Center as="div">
 				<Heading

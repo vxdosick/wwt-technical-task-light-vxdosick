@@ -13,11 +13,11 @@ export const Completed: React.FC = () => {
 		<>
 			<Center
 				as="header"
-				mb={10}
+				mb="10"
 			>
 				<Heading
-					as={'h2'}
-					size={'xl'}
+					as="h2"
+					size="xl"
 				>
 					{t('completedHeader')}
 				</Heading>
@@ -25,7 +25,7 @@ export const Completed: React.FC = () => {
 			{completedTasks.length > 0 ? (
 				<List
 					as="ul"
-					spacing={'3'}
+					spacing="3"
 				>
 					{completedTasks.map(task => (
 						<ListItem
@@ -33,25 +33,25 @@ export const Completed: React.FC = () => {
 							key={task.id}
 						>
 							<Heading
-								as={'h3'}
-								mb={'4'}
-								fontSize={'lg'}
+								as="h3"
+								mb="4"
+								fontSize="lg"
 							>
 								{t('taskNumber')} {task.id}: {task.title}
 							</Heading>
 							{task.description ? (
 								<Text
-									as={'p'}
-									mb={'4'}
-									fontSize={'md'}
+									as="p"
+									mb="4"
+									fontSize="md"
 								>
 									{t('taskDetails')} {task.description}
 								</Text>
 							) : (
 								<Text
-									as={'p'}
-									mb={'4'}
-									fontSize={'md'}
+									as="p"
+									mb="4"
+									fontSize="md"
 								>
 									{t('noTaskDetails')}
 								</Text>
@@ -59,9 +59,9 @@ export const Completed: React.FC = () => {
 							<Button
 								as="button"
 								colorScheme="orange"
-								p={'5'}
-								size={'xs'}
-								fontSize={'md'}
+								p="5"
+								size="xs"
+								fontSize="md"
 								onClick={() => toggleComplete(task.id)}
 							>
 								{t('returntoComplete')}
@@ -72,7 +72,7 @@ export const Completed: React.FC = () => {
 			) : (
 				<Heading
 					as="h2"
-					textAlign={'center'}
+					textAlign="center"
 				>
 					{t('completedEmptyMessage')}
 				</Heading>

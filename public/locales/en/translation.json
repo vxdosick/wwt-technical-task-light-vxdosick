@@ -25,5 +25,7 @@
     "language": {
     "en": "En",
     "ua": "Ua"
-  }
+    },
+    "failedMessage": "Such an assignment already exists",
+    "errorTitle": "Failed"
 }

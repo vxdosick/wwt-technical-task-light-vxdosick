@@ -23,44 +23,56 @@ interface TaskState {
 	loadTasks: () => void
 }
 
+interface AlertState {
+	isAlertVisible: boolean
+	alertMessage: string
+	setAlert: (visible: boolean, message: string) => void
+}
+
 const loadTasksFromLocalStorage = (): Task[] => {
 	const tasks = localStorage.getItem('tasks')
 	return tasks ? JSON.parse(tasks) : []
 }
 
-export const useAddTaskStore = create<FormState & TaskState>(set => ({
-	title: '',
-	description: '',
-	setTitle: title => set({ title }),
-	setDescription: description => set({ description }),
-	tasks: loadTasksFromLocalStorage(),
-	addTask: task =>
-		set(state => {
-			const updatedTasks = [...state.tasks, { ...task, isComplete: false }]
-			localStorage.setItem('tasks', JSON.stringify(updatedTasks))
-			return { tasks: updatedTasks }
-		}),
-	removeTask: id =>
-		set(state => {
-			const updatedTasks = state.tasks.filter(task => task.id !== id)
-			localStorage.setItem('tasks', JSON.stringify(updatedTasks))
-			return { tasks: updatedTasks }
-		}),
-	toggleComplete: id =>
-		set(state => {
-			const updatedTasks = state.tasks.map(task =>
-				task.id === id ? { ...task, isComplete: !task.isComplete } : task
-			)
-			localStorage.setItem('tasks', JSON.stringify(updatedTasks))
-			return { tasks: updatedTasks }
-		}),
-	updateTask: (id, title, description) =>
-		set(state => {
-			const updatedTasks = state.tasks.map(task =>
-				task.id === id ? { ...task, title, description } : task
-			)
-			localStorage.setItem('tasks', JSON.stringify(updatedTasks))
-			return { tasks: updatedTasks }
-		}),
-	loadTasks: () => set({ tasks: loadTasksFromLocalStorage() })
-}))
+export const useAddTaskStore = create<FormState & TaskState & AlertState>(
+	set => ({
+		title: '',
+		description: '',
+		setTitle: title => set({ title }),
+		setDescription: description => set({ description }),
+		tasks: loadTasksFromLocalStorage(),
+		addTask: task =>
+			set(state => {
+				const updatedTasks = [...state.tasks, { ...task, isComplete: false }]
+				localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+				return { tasks: updatedTasks }
+			}),
+		removeTask: id =>
+			set(state => {
+				const updatedTasks = state.tasks.filter(task => task.id !== id)
+				localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+				return { tasks: updatedTasks }
+			}),
+		toggleComplete: id =>
+			set(state => {
+				const updatedTasks = state.tasks.map(task =>
+					task.id === id ? { ...task, isComplete: !task.isComplete } : task
+				)
+				localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+				return { tasks: updatedTasks }
+			}),
+		updateTask: (id, title, description) =>
+			set(state => {
+				const updatedTasks = state.tasks.map(task =>
+					task.id === id ? { ...task, title, description } : task
+				)
+				localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+				return { tasks: updatedTasks }
+			}),
+		loadTasks: () => set({ tasks: loadTasksFromLocalStorage() }),
+		isAlertVisible: false,
+		alertMessage: '',
+		setAlert: (visible, message) =>
+			set({ isAlertVisible: visible, alertMessage: message })
+	})
+)
